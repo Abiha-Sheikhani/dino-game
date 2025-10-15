@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(to top, #f7f7f7 60%, #c2e9fb 100%);
+}
+
+.main-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Path / Ground line */
+#ground-line {
+  position: absolute;
+  bottom: 12vh;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #777;
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+/* Dino */
+#dino {
+  position: absolute;
+  left: 10vw;
+  bottom: 12vh;
+  width: 7vw;
+  max-width: 100px;
+  z-index: 3;
+}
+
+#dino img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Obstacles (can be more than one now) */
+.obstacle {
+  position: absolute;
+  bottom: 12vh;
+  width: 5vw;
+  max-width: 80px;
+  z-index: 2;
+}
+
+.obstacle img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Score */
+#score {
+  position: absolute;
+  top: 4vh;
+  right: 4vw;
+  font-family: monospace;
+  font-size: 2.2vh;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+  z-index: 999;
+}
+
+.play-btn {
+  margin-top: 2vh;
+  padding: 1vh 2vh;
+  background: white;
+  color: black;
+  font-size: 2vh;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
