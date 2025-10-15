@@ -77,11 +77,7 @@ function loop() {
   dino.style.bottom = (window.innerHeight * 0.12 + dinoY) + 'px';
 
   if (obstacles.length === 0 || obstacles[obstacles.length - 1].offsetLeft < window.innerWidth - 400) {
-    const randomCount = Math.random()
-    for (let i = 0; i < randomCount; i++) {
-      createObstacle();
-      if (i === 1) obstacles[1].style.left = (parseInt(obstacles[0].style.left) + 100) + 'px';
-    }
+    createObstacle();
   }
 
   obstacles.forEach((obs, i) => {
@@ -111,14 +107,23 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
+// 🔹 PC: Start + Jump
 document.addEventListener('keydown', e => {
-  if (!isRunning) startGame();
-  if ((e.code === 'Space' || e.code === 'ArrowUp')) jump();
+  if ((e.code === 'Space' || e.code === 'ArrowUp')) {
+    if (!isRunning) startGame();
+    else jump();
+  }
 });
 
+// 🔹 Mobile: First tap starts, next taps make jump
+let gameStartedOnce = false;
 document.addEventListener('touchstart', () => {
-  if (!isRunning) startGame();
-  jump();
+  if (!gameStartedOnce) {
+    startGame();
+    gameStartedOnce = true;
+  } else {
+    jump();
+  }
 });
 
 resetGame();

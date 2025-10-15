@@ -4,98 +4,90 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  font-family: system-ui, sans-serif;
-  background: linear-gradient(to top, #f7f7f7 60%, #c2e9fb 100%);
-}
-
 .main-container {
   position: relative;
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(to top, #f7f7f7 60%, #c2e9fb 100%);
   overflow: hidden;
-}
-
-/* Path / Ground line */
-#ground-line {
-  position: absolute;
-  bottom: 12vh;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background-color: #777;
-  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15);
-  z-index: 1;
 }
 
 /* Dino */
 #dino {
   position: absolute;
-  left: 10vw;
-  bottom: 12vh;
-  width: 7vw;
-  max-width: 100px;
-  z-index: 3;
+  bottom: 12%;
+  left: 10%;
+  width: clamp(60px, 7vw, 100px);
 }
 
 #dino img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-/* Obstacles (can be more than one now) */
+/* Dynamic obstacles */
 .obstacle {
   position: absolute;
-  bottom: 12vh;
-  width: 5vw;
-  max-width: 80px;
-  z-index: 2;
+  bottom: 12%;
+  width: clamp(40px, 5vw, 80px);
 }
 
 .obstacle img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-/* Score */
+/* Ground line */
+.ground {
+  position: absolute;
+  bottom: 11%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #999;
+}
+
+/* Score display */
 #score {
   position: absolute;
-  top: 4vh;
-  right: 4vw;
-  font-family: monospace;
-  font-size: 2.2vh;
+  top: 5%;
+  right: 5%;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(14px, 2vw, 26px);
   color: #333;
   font-weight: bold;
 }
 
-/* Overlay */
+/* Game over overlay */
 .overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.6);
-  color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-size: 3vh;
-  z-index: 999;
+  justify-content: center;
+  gap: 1rem;
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(22px, 3vw, 40px);
 }
 
 .play-btn {
-  margin-top: 2vh;
-  padding: 1vh 2vh;
-  background: white;
-  color: black;
-  font-size: 2vh;
+  padding: 0.8rem 1.6rem;
+  font-size: clamp(14px, 1.2rem, 20px);
+  background: #fff;
+  color: #333;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.play-btn:hover {
+  background: #333;
+  color: white;
 }
